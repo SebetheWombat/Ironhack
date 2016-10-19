@@ -9,13 +9,15 @@ class Payroll
       @employees.each do |employee|
       	puts "#{employee.name}'s weekly salary is #{employee.calculate_salary}"
       	total_payroll += employee.calculate_salary
+        total_payroll += (total_payroll * 0.18)
+
+        notify_employee(employee)
 	  end
-	  puts total_payroll
+	  puts "Total payroll with taxes: #{total_payroll}"
   end
 
-  def notify_employee
-  		@employees.each do |employee|
-        	puts "#{employee.email} your salary this week is #{employee.calculate_salary}"
-        end
+  private 
+  def notify_employee(employee)
+      puts "#{employee.email} your salary this week is #{employee.calculate_salary}"
   end
 end

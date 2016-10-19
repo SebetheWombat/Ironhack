@@ -14,7 +14,6 @@ employees = [josh, nizar, ted, ike, sarah]
 payroll = Payroll.new(employees)
 payroll.pay_employees
 puts ""
-payroll.notify_employee
 
 # puts "Nizar's salary is #{nizar.calculate_salary}"
 # puts "Josh's salary is #{josh.calculate_salary}"

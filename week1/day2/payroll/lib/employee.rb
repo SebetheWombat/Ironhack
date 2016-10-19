@@ -29,7 +29,8 @@ class SalariedEmployee < Employee
 	end
 
 	def calculate_salary
-		(@salary / 52.0) * 0.82
+		pay = (@salary / 52.0) * 0.82
+		pay.round(2)
 	end
 end
 
@@ -44,7 +45,11 @@ class MultiPaymentEmployee < Employee
 	end
 
 	def calculate_salary
-		((@base_salary/52.0) + ((@hours_worked-40)*@hourly_rate)) * 0.82
+		extra = 0
+		if @hours_worked > 40
+			extra = (@hours_worked-40)*@hourly_rate
+		end
+			((@base_salary/52.0) + extra) * 0.82
 	end
 end
 
