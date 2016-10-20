@@ -13,7 +13,7 @@ class Payroll
 
         notify_employee(employee)
 	  end
-	  puts "Total payroll with taxes: #{total_payroll}"
+	  puts "Total payroll with taxes: #{total_payroll.round(2)}"
   end
 
   private 

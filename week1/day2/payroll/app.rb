@@ -1,3 +1,4 @@
+require_relative("lib/salary.rb")
 require_relative("lib/employee.rb")
 require_relative("lib/payroll.rb")
 
