@@ -1,5 +1,5 @@
 class Game
-	attr_accessor :position
+	attr_accessor :position, :inventory, :game_board
 	def initialize()
 		@game_board = [ [], [], [], [], [] ]
 		@row = 0
@@ -37,6 +37,7 @@ class Game
 		@position = @game_board[@row][@col]
 	end
 
+	
 	def check_inventory
 		puts "Your current inventory:"
 		@inventory.each do |item|

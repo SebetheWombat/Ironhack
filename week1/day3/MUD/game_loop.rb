@@ -10,12 +10,16 @@ game.add_room(0,2,Room.new("forest","It is dark",["s"],{"sing" => "Your singing 
 game.add_room(1,2,Room.new("dark room","It smells like cranberries",["n","s"],{"sing" => "shhhh! You hear a noise..."},[]))
 game.add_room(2,2,Room.new("open field","The grass is overgrown",["n","e","w"],{"pick up" => "You pick a flower"},["flower"]))
 game.add_room(2,3,Room.new("swamp","There are mosquitos",["w"],{},[]))
-game.add_room(2,1,Room.new("abandoned lot","The weeds are thick and tangle. Strewn throughout the lot are crumbled bricks as though there used to be a building of some sort.", ["e"],{},[]))
-
+game.add_room(2,1,Room.new("abandoned lot","The weeds are thick and tangle. Strewn throughout the lot are crumbled bricks as though there used to be a building of some sort.", ["e","w"],{"sing" => "Hmmm there seems to be something in the weeds"},[]))
+game.add_room(2,0,Room.new("abandoned building", "",["e"],{"look for food" => "There's some kibble...","eat" => "That's gross man","pick up" => "You pick up the kibble"},["kibble"]))
 while alive
+	if game.inventory.include?("kibble")
+		game.game_board[2][1].actions["sing"] = "You're singing attracks a puppy! Best day ever! You win!!!!"
+	end
 	game.set_pos()
 	puts "You are in a #{game.position.name}"
 	puts game.position.description
+	puts "Exits: #{game.position.exits.join(", ")}"
 	puts "> "
 	user_action = gets.chomp
 	until game.position.exits.include?(user_action) || game.position.actions.has_key?(user_action) || user_action == "quit" || user_action == "inventory"
@@ -23,6 +27,7 @@ while alive
 			puts "There is no exit that way"
 			puts "You are in a #{game.position.name}"
 			puts game.position.description
+			puts "Exits: #{game.position.exits.join(", ")}"
 			puts "> "
 			user_action = gets.chomp
 		elsif actions.include?(user_action)
@@ -45,7 +50,7 @@ while alive
 		if user_action == "pick up"
 			game.pick_up(game.position.items[0])
 		end
-		if str.include? "dead"
+		if (str.include?("dead") || str.include?("win"))
 			break
 		end
 	end

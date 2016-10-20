@@ -8,10 +8,4 @@ class Room
 		@items = items
 	end
 
-	def check_exits
-		print "Exits: "
-		@exits.each do |exit|
-			puts exit.upcase
-		end
-	end
 end
