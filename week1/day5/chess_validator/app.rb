@@ -1,5 +1,3 @@
-#TODO: Create capture method to capture enemy pieces
-#TODO: Block movement if there is a piece in path of travel
 #TODO: Create game loop so players can take turns making moves
 #TODO: Create check for Check
 

@@ -12,9 +12,71 @@ class Board
 
 	def can_move?(startx,starty,endx,endy)
 		if @board[startx][starty].nil? || endx > 8 || endy > 8 || (startx == endx && starty == endy)
+			puts "yo"
 			"no"
 		else
 			@board[startx][starty].can_move?(endx,endy)
+		end
+	end
+
+	def check_path(startx,starty,endx,endy)
+		#Piece is moving vertically
+		if startx == endx
+			cur_y = starty
+			while cur_y != endy
+				if !@board[startx][cur_y].nil? && cur_y != starty
+					return "Path blocked" # by #{@board[startx][y]}"
+				end
+				if endy > starty
+					cur_y += 1
+				else
+					cur_y -= 1
+				end
+			end
+		
+		#Piece moves horizontally
+		elsif starty == endy
+			cur_x = startx
+			while cur_x != endx
+				if !@board[cur_x][starty].nil? && cur_x != startx
+					return "Path blocked" # by #{@board[i][starty].name}"
+				end
+				if endx > startx
+					cur_x += 1
+				else
+					cur_x -= 1
+				end
+			end
+		#Piece is moving diagonally
+		else
+			cur_x = startx + 1
+			if endx < startx
+				cur_x = startx - 1
+			end
+			cur_y = starty
+			if endy < starty
+				cur_y = starty - 1
+			end
+			while cur_x != endx
+				while cur_y != endy
+					if (cur_x - startx).abs == (cur_y-starty).abs
+						if !@board[cur_x][cur_y].nil?
+							return "Path blocked"
+						end
+					
+					end
+					if endy > starty
+						cur_y += 1
+					else
+						cur_y -= 1
+					end
+				end
+				if endx > startx
+					cur_x += 1
+				else
+					cur_x -= 1
+				end
+			end
 		end
 	end
 
@@ -28,7 +90,9 @@ class Board
 		foy = frommoves[1].to_i
 
 		if can_move?(fox,foy,tox,toy) == "yes"
-			if @board[tox][toy].nil?
+			if check_path(fox,foy,tox,toy) == "Path blocked"
+				puts "Path blocked!"
+			elsif @board[tox][toy].nil?
 				swap(fox,foy,tox,toy)
 			elsif @board[tox][toy].color == @board[fox][foy].color
 				puts "Invalid Move!"
@@ -37,6 +101,7 @@ class Board
 				swap(fox,foy,tox,toy)
 			end
 		else
+			puts "piece problem"
 			puts "Invalid Move!"
 		end
 		print_board
