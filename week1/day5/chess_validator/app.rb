@@ -1,3 +1,8 @@
+#TODO: Create capture method to capture enemy pieces
+#TODO: Block movement if there is a piece in path of travel
+#TODO: Create game loop so players can take turns making moves
+#TODO: Create check for Check
+
 require_relative("lib/piece.rb")
 require_relative("lib/rook.rb")
 require_relative("lib/king.rb")
@@ -37,31 +42,10 @@ end
 
 puts ""
 
-puts "Valid Board movements"
-puts "----------------------"
-puts board.can_move?(1,8,1,5) == "yes"
-puts board.can_move?(8,1,8,8) == "yes"
-puts board.can_move?(1,7,1,6) == "yes"
-puts board.can_move?(1,7,1,5) == "yes"
-puts board.can_move?(2,8,3,6) == "yes"
-puts board.can_move?(3,8,8,3) == "yes"
-puts board.can_move?(4,8,1,8) == "yes"
-puts board.can_move?(5,8,6,7) == "yes"
-puts board.can_move?(1,1,8,1) == "yes"
-
-
-puts "Invalid Board movements"
-puts "----------------------"
-
-puts board.can_move?(3,3,4,4) == "no"
-puts board.can_move?(1,8,1,10) == "no"
-puts board.can_move?(1,7,1,2) == "no"
-puts board.can_move?(2,8,6,4) == "no"
-
 board.print_board
 
 
-2.times do 
+5.times do 
 	f = ""
 	t = ""
 	print "move from: "

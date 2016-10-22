@@ -28,18 +28,27 @@ class Board
 		foy = frommoves[1].to_i
 
 		if can_move?(fox,foy,tox,toy) == "yes"
-			tmp = @board[fox][foy]
-			@board[tox][toy] = tmp
-			@board[tox][toy].x = tox
-			@board[tox][toy].y = toy
-			@board[fox][foy] = nil
+			if @board[tox][toy].nil?
+				swap(fox,foy,tox,toy)
+			elsif @board[tox][toy].color == @board[fox][foy].color
+				puts "Invalid Move!"
+			else
+				puts "#{@board[fox][foy].color.upcase} #{@board[fox][foy].name}TAKES #{@board[tox][toy].color.upcase} #{@board[tox][toy].name}"
+				swap(fox,foy,tox,toy)
+			end
 		else
 			puts "Invalid Move!"
 		end
 		print_board
-
 	end
 
+	def swap(a,b,x,y)
+		tmp = @board[a][b]
+		@board[x][y] = tmp
+		@board[x][y].x = x
+		@board[x][y].y = y
+		@board[a][b] = nil
+	end
 	def print_board
 			puts ""
 			len = @board.length
@@ -53,9 +62,11 @@ class Board
 					newBoard[len-1-c][r] = tmp
 				end
 			end
-			puts "+----+----+----+----+----+----+----+----+"
+			puts "--+----+----+----+----+----+----+----+----+"
 			for r in 0..newBoard.length-2
+				print "#{(8-r).to_s.red} "
 			 for c in 1..newBoard[r].length-1
+
 			 	if newBoard[r][c].nil?
 			 		print "|    "
 			 	elsif newBoard[r][c].color == 'white'
@@ -65,8 +76,9 @@ class Board
 			 	end
 			 end
 			 puts "|"
-			 puts "+----+----+----+----+----+----+----+----+"	
+			 puts "--+----+----+----+----+----+----+----+----+"	
 		end
+		puts "  | #{"1".red}  | #{"2".red}  | #{"3".red}  | #{"4".red}  | #{"5".red}  | #{"6".red}  | #{"7".red}  | #{"8".red}  |"
 		puts ""
 	end
 
