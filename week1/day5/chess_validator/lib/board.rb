@@ -53,17 +53,19 @@ class Board
 					newBoard[len-1-c][r] = tmp
 				end
 			end
+			puts "+----+----+----+----+----+----+----+----+"
 			for r in 0..newBoard.length-2
 			 for c in 1..newBoard[r].length-1
 			 	if newBoard[r][c].nil?
-			 		print "|__"
+			 		print "|    "
 			 	elsif newBoard[r][c].color == 'white'
-			 		print "|#{newBoard[r][c].name.white}"
+			 		print "| #{newBoard[r][c].name.white} "
 			 	else
-			 		print "|#{newBoard[r][c].name}"
+			 		print "| #{newBoard[r][c].name.blue} "
 			 	end
 			 end
-			 puts "|"			
+			 puts "|"
+			 puts "+----+----+----+----+----+----+----+----+"	
 		end
 		puts ""
 	end
