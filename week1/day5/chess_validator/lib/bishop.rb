@@ -1,10 +1,4 @@
-class Bishop
-	attr_accessor :x, :y
-	def initialize(x,y,color)
-		@x = x
-		@y = y
-		@color = color
-	end
+class Bishop < Piece
 
 	def can_move?(new_x,new_y)
 		if (new_x - @x).abs == (new_y - @y).abs

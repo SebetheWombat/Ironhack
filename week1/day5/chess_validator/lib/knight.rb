@@ -1,10 +1,4 @@
-class Knight
-	attr_accessor :x, :y
-	def initialize(x,y,color)
-		@x = x
-		@y = y
-		@color = color
-	end
+class Knight < Piece
 
 	def can_move?(new_x,new_y)
 		if (((new_x == @x+2 || new_x == @x-2) && (new_y == @y+1 || new_y == @y-1))||
