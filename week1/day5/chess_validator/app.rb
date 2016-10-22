@@ -1,4 +1,3 @@
-#TODO: Create game loop so players can take turns making moves
 #TODO: Create check for Check
 
 require_relative("lib/piece.rb")
@@ -41,16 +40,53 @@ end
 puts ""
 
 board.print_board
+turn = "white"
+move_from = ""
+move_to = ""
 
-
-5.times do 
-	f = ""
-	t = ""
-	print "move from: "
-	f = gets.chomp
-	print "move to: "
-	t = gets.chomp
-	board.move_piece(f,t)
+while turn != "orange"
+	while turn == "white"
+		board.move_made = false
+		puts "WHITE'S MOVE!"
+		print "move from: "
+		move_from = gets.chomp
+		if move_from == "quit"
+			turn = "orange"
+			break
+		end
+		moves = move_from.split(" ")
+		if !board.board[moves[0].to_i][moves[1].to_i].nil? && board.board[moves[0].to_i][moves[1].to_i].color == "black"
+			puts "You can't move your opponents pieces!"
+		else
+			print "move to: "
+			move_to = gets.chomp
+			board.move_piece(move_from,move_to)
+			if board.move_made
+				turn = "black"
+			end
+		end
+	end
+	while turn == "black"
+		board.move_made = false
+		puts "BLACKS'S MOVE!"
+		print "move from: "
+		move_from = gets.chomp
+		if move_from == "quit"
+			turn = "orange"
+			break
+		end
+		moves = move_from.split(" ")
+		if !board.board[moves[0].to_i][moves[1].to_i].nil? && board.board[moves[0].to_i][moves[1].to_i].color == "white"
+			puts "You can't move your opponents pieces!"
+		else
+			print "move to: "
+			move_to = gets.chomp
+			board.move_piece(move_from,move_to)
+			if board.move_made
+				turn = "white"
+			end
+		end
+	end
 end
 
 

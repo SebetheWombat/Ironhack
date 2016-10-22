@@ -1,9 +1,10 @@
 require 'colorize'
 
 class Board
-	attr_accessor :board
+	attr_accessor :board, :move_made
 	def initialize()
 		@board = [[],[],[],[],[],[],[],[],[]]
+		@move_made = false
 	end
 
 	def add_piece(piece)
@@ -12,7 +13,6 @@ class Board
 
 	def can_move?(startx,starty,endx,endy)
 		if @board[startx][starty].nil? || endx > 8 || endy > 8 || (startx == endx && starty == endy)
-			puts "yo"
 			"no"
 		else
 			@board[startx][starty].can_move?(endx,endy)
@@ -94,14 +94,15 @@ class Board
 				puts "Path blocked!"
 			elsif @board[tox][toy].nil?
 				swap(fox,foy,tox,toy)
+				@move_made = true
 			elsif @board[tox][toy].color == @board[fox][foy].color
 				puts "Invalid Move!"
 			else
 				puts "#{@board[fox][foy].color.upcase} #{@board[fox][foy].name}TAKES #{@board[tox][toy].color.upcase} #{@board[tox][toy].name}"
 				swap(fox,foy,tox,toy)
+				@move_made = true
 			end
 		else
-			puts "piece problem"
 			puts "Invalid Move!"
 		end
 		print_board
