@@ -1,3 +1,5 @@
+require 'colorize'
+
 class Board
 	attr_accessor :board
 	def initialize()
@@ -14,6 +16,28 @@ class Board
 		else
 			@board[startx][starty].can_move?(endx,endy)
 		end
+	end
+
+	def move_piece(movefrom,moveto)
+		piece = nil
+		frommoves = movefrom.split(" ")
+		tomoves = moveto.split(" ")
+		tox = tomoves[0].to_i
+		toy = tomoves[1].to_i
+		fox = frommoves[0].to_i
+		foy = frommoves[1].to_i
+
+		if can_move?(fox,foy,tox,toy) == "yes"
+			tmp = @board[fox][foy]
+			@board[tox][toy] = tmp
+			@board[tox][toy].x = tox
+			@board[tox][toy].y = toy
+			@board[fox][foy] = nil
+		else
+			puts "Invalid Move!"
+		end
+		print_board
+
 	end
 
 	def print_board
@@ -33,12 +57,15 @@ class Board
 			 for c in 1..newBoard[r].length-1
 			 	if newBoard[r][c].nil?
 			 		print "|__"
+			 	elsif newBoard[r][c].color == 'white'
+			 		print "|#{newBoard[r][c].name.white}"
 			 	else
 			 		print "|#{newBoard[r][c].name}"
 			 	end
 			 end
 			 puts "|"			
 		end
+		puts ""
 	end
 
 end

@@ -28,7 +28,7 @@ board.add_piece(Bishop.new(3,1,"white","wb"))
 board.add_piece(Queen.new(4,1,"white","wq"))
 board.add_piece(King.new(5,1,"white","wK"))
 board.add_piece(Bishop.new(6,1,"white","wb"))
-board.add_piece(Knight.new(7,1,"White","wk"))
+board.add_piece(Knight.new(7,1,"white","wk"))
 board.add_piece(Rook.new(8,1,"white","wr"))
 
 8.times do |i|
@@ -47,6 +47,7 @@ puts board.can_move?(2,8,3,6) == "yes"
 puts board.can_move?(3,8,8,3) == "yes"
 puts board.can_move?(4,8,1,8) == "yes"
 puts board.can_move?(5,8,6,7) == "yes"
+puts board.can_move?(1,1,8,1) == "yes"
 
 
 puts "Invalid Board movements"
@@ -59,5 +60,9 @@ puts board.can_move?(2,8,6,4) == "no"
 
 board.print_board
 
+board.move_piece("1 1","1 3")
+board.move_piece("1 8","1 5")
+board.move_piece("1 3","1 4")
+board.move_piece("1 4","2 4")
 
 
