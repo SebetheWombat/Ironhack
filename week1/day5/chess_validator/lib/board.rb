@@ -14,6 +14,8 @@ class Board
 	def can_move?(startx,starty,endx,endy)
 		if @board[startx][starty].nil? || endx > 8 || endy > 8 || (startx == endx && starty == endy)
 			"no"
+		elsif @board[startx][starty].name == "P "
+			@board[startx][starty].can_move?(endx,endy,@board)
 		else
 			@board[startx][starty].can_move?(endx,endy)
 		end
@@ -25,7 +27,7 @@ class Board
 			cur_y = starty
 			while cur_y != endy
 				if !@board[startx][cur_y].nil? && cur_y != starty
-					return "Path blocked" # by #{@board[startx][y]}"
+					return "Path blocked" 
 				end
 				if endy > starty
 					cur_y += 1
@@ -39,7 +41,7 @@ class Board
 			cur_x = startx
 			while cur_x != endx
 				if !@board[cur_x][starty].nil? && cur_x != startx
-					return "Path blocked" # by #{@board[i][starty].name}"
+					return "Path blocked" 
 				end
 				if endx > startx
 					cur_x += 1
@@ -130,7 +132,7 @@ class Board
 			end
 			puts "--+----+----+----+----+----+----+----+----+"
 			for r in 0..newBoard.length-2
-				print "#{(8-r).to_s.red} "
+				print "#{(8-r).to_s.yellow} "
 			 for c in 1..newBoard[r].length-1
 
 			 	if newBoard[r][c].nil?
@@ -138,13 +140,13 @@ class Board
 			 	elsif newBoard[r][c].color == 'white'
 			 		print "| #{newBoard[r][c].name.white} "
 			 	else
-			 		print "| #{newBoard[r][c].name.blue} "
+			 		print "| #{newBoard[r][c].name.red} "
 			 	end
 			 end
 			 puts "|"
 			 puts "--+----+----+----+----+----+----+----+----+"	
 		end
-		puts "  | #{"1".red}  | #{"2".red}  | #{"3".red}  | #{"4".red}  | #{"5".red}  | #{"6".red}  | #{"7".red}  | #{"8".red}  |"
+		puts "  | #{"1".yellow}  | #{"2".yellow}  | #{"3".yellow}  | #{"4".yellow}  | #{"5".yellow}  | #{"6".yellow}  | #{"7".yellow}  | #{"8".yellow}  |"
 		puts ""
 	end
 

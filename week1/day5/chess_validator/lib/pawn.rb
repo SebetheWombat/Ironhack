@@ -1,11 +1,23 @@
 class Pawn < Piece
-	def can_move?(new_x,new_y)
+			attr_accessor :x, :y, :color, :name
+	def initialize(x,y,color,name)
+		@x = x
+		@y = y
+		@color = color
+		@name = name
+	end
+	def can_move?(new_x,new_y,board)
+
 		if new_x == @x && 
 			(((@color == 'black' && (new_y == @y-1 ||(@y == 7 && new_y==@y-2)))|| 
 				(@color == 'white' && (new_y == @y+1 ||( @y == 2 && new_y==@y+2)))))
-			return "yes"
+			"yes"
+		elsif (new_x == @x+1 || new_x == @x-1) && 
+			((new_y == @y+1 && @color == "white") || (new_y == @y-1 && @color == "black")) &&
+			!board[new_x][new_y].nil?
+			"yes"
 		else
-			return "no"
+			"no"
 		end
 	end
 end
