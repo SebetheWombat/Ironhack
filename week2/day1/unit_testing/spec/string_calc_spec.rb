@@ -1,10 +1,13 @@
 require_relative("../lib/string_calculator.rb")
 RSpec.describe Calculator do
 	describe "#add" do
-		calc = Calculator.new
+		let :calc do
+			Calculator.new
+		end
 		it "adds two numbers separated by commas" do
 			expect(calc.add("7,7")).to eq(14)
 			expect(calc.add("8,4")).to eq(12)
+			expect(calc.add("10,20")).to eq(30)
 		end
 
 		it "returns the single number when only 1 is given" do
