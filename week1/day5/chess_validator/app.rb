@@ -55,7 +55,10 @@ while turn != "orange"
 			break
 		end
 		moves = move_from.split(" ")
-		if !board.board[moves[0].to_i][moves[1].to_i].nil? && board.board[moves[0].to_i][moves[1].to_i].color == "black"
+		if moves[0].to_i > 8 || moves[1].to_i > 8
+			puts "Invalid Move!"
+			board.print_board
+		elsif !board.board[moves[0].to_i][moves[1].to_i].nil? && board.board[moves[0].to_i][moves[1].to_i].color == "black"
 			puts "You can't move your opponents pieces!"
 		else
 			print "move to: "
@@ -76,7 +79,10 @@ while turn != "orange"
 			break
 		end
 		moves = move_from.split(" ")
-		if !board.board[moves[0].to_i][moves[1].to_i].nil? && board.board[moves[0].to_i][moves[1].to_i].color == "white"
+		if moves[0].to_i > 8 || moves[1].to_i > 8
+			puts "Invalid Move!"
+			board.print_board
+		elsif !board.board[moves[0].to_i][moves[1].to_i].nil? && board.board[moves[0].to_i][moves[1].to_i].color == "white"
 			puts "You can't move your opponents pieces!"
 		else
 			print "move to: "
