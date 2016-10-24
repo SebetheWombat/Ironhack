@@ -1,5 +1,6 @@
 class Calculator
 	def add(nums = "")
+		nums.gsub! "\n",","
 		nums.gsub! "$",","
 		if nums == ""
 			0
@@ -8,7 +9,7 @@ class Calculator
 		end
 	end
 
-	def substract(nums = "")
+	def subtract(nums = "")
 		nums.gsub! "$",","
 		if nums == ""
 			0

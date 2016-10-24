@@ -24,4 +24,4 @@ p the_calculator.add("7$7$1$2") == 17
 
 p the_calculator.add("7$7,1,2") == 17
 
-p the_calculator.substract("10,5") == 5
+p the_calculator.subtract("10,5") == 5
