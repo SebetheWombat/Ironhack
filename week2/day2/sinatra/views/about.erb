@@ -1,0 +1,13 @@
+<link href="style.css" rel="stylesheet"/>
+<h1>Hello! I'm a Wombat</h1>
+<p>Wombats are majestic creatures. Just ask David Attenborough.</p>
+
+<% if Date.today.monday? %>
+	<p>Izzy Ironside is <strong>not</strong> a fan of Mondays.</p>
+<% else %>
+	<p>Glad today's not Monday</p>
+<%end%>
+
+<p> Izzy Ironside was born on 
+	<%= Time.now %>
+</p>
