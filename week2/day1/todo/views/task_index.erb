@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="/style.css">
+	<title>Tasks</title>
+</head>
+<body>
+	<h1>Things To Do!</h1>
+	<ul>
+	<% @tasks.each do |task| %>
+
+		<li> <p class=<%= "completed" if task.completed?%>> Task: <%= task.content %></p>
+			<a href="/complete/<%= task.id %>">Complete</a>
+			<form action="/delete/<%= task.id %>" method="POST" class=<%= "incomplete" if !task.completed?%>>
+				<button type="submit">Delete</button>
+			</form>
+		</li>
+	<%end%>
+	</ul>
+	<a href="/new_task">Add New Task</a>
+</body>
+</html>
