@@ -1,0 +1,13 @@
+html{
+	text-align: center;
+	margin:auto;
+}
+h1{
+	color:green;
+}
+ul{
+	border-style:groove;
+	border-width:3px;
+	box-shadow: 5px 5px 10px black;
+	list-style-type: none;
+}
