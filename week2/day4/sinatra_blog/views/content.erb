@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
-	<h1><%= @post.title %></h1>
-	<p><%= @post.text %></p>
+	<main>
+		<h1><%= @post.title %></h1>
+		<h3><i><%= @post.category %></i></h3>
+		<p><%= @post.text %></p>
+	</main>
 
 	<a href="/">Back</a>
 </body>

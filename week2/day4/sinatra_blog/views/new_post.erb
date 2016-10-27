@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
+	<h1 id="np">Create a New Post</h1>
 	<form action="/addPost" method="POST">
-		<input type="text" name="title" placeholder="Title"><br>
-		<input type="text" name="author" placeholder="Author"><br>
-		<input type="text" name="category" placeholder="Category"><br>
-		<textarea name="content" rows="5" col="400" placeholder="Your content here!"></textarea><br>
+		<input type="text" name="title" placeholder="Title">
+		<input type="text" name="author" placeholder="Author">
+		<input type="text" name="category" placeholder="Category">
+		<textarea name="content" rows="5" col="400" placeholder="Your content here!"></textarea>
 		<button type="submit">Submit Post</button>
 	</form>
 </body>
