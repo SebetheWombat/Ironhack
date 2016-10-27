@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<ol>
+		<% @posts.each_with_index do |post,index| %>
+			<li><a href="/content/<%= index %>"><h2><%= post.title %></h2>
+			<h3><%= post.author %></h3>
+				<p><%= post.date %></p></a>
+			</li>
+		<%end%>
+		<br>
+		<a href="/newPost">Click here to add a new post</a>
+	</ol>
+</body>
+</html>
