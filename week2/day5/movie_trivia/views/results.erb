@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Movie Posters</title>
+</head>
+<body>
+	<h1>Movie Trivia!</h1>
+	<h3>Which of the following movies were released in the year <%= @year %>?</h3>
+	<% @movies.each do |movie| %>
+		<li>
+		<form method="POST">
+			<img src="<%= movie.poster %>" style="width:150px">
+			<button type="submit" name= "year" value ="<%= movie.year %>" formaction="/answer">
+			<%= movie.title %> </button>
+		</form>
+		</li>
+	<% end %>
+</body>
+</html>
