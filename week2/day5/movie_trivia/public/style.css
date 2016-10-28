@@ -1,0 +1,35 @@
+html,body{
+	margin:auto;
+	text-align: center;
+}
+
+li{
+	list-style-type: none;
+}
+img{
+	display: block;
+}
+button{
+	width:150px;
+}
+#container{
+	width:700px;
+	margin:0 auto;
+}
+.fancy{
+	display:inline-block;
+	float:left;
+	margin:0 10px 10px 0;
+	height: 300px;
+	overflow:hidden;
+	padding: 0;
+	width:220px;
+	border: 1px ridge orange;
+}
+input{
+	height:300px;
+	width:200px;
+}
+.clear{
+	clear:both;
+}

@@ -13,7 +13,7 @@ end
 post "/search_results" do
 	the_search = Imdb::Search.new(params[:title])
 	movies.clear_movies
-	movies.add_movies(the_search.movies.take(15))
+	movies.add_movies(the_search.movies.take(25))
 	@movies = movies.movies
 	@year = movies.return_year
 	erb(:results)
@@ -26,3 +26,4 @@ post "/answer" do
 		"What a loser! How could you not know that?"
 	end
 end
+
