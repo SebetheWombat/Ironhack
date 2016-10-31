@@ -1,0 +1,27 @@
+.blue{
+	background-color: #1890bf;
+	border: 5px ridge #c40f0f;
+}
+.green{
+	background-color: #70b752;
+}
+#red{
+	background-color: #c40f0f;
+	border: 5px ridge #1890bf;
+}
+.box{
+	margin:10px;
+}
+.direction{
+	padding: 20%;
+}
+#top{
+	position: absolute;
+	top:350px;
+	left:350px;
+}
+#bottom{
+	position: absolute;
+	top:400px;
+	left:500px;
+}
