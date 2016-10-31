@@ -1,0 +1,80 @@
+@font-face{
+	font-family: proximaNova;
+	src: url(fonts/ProximaNova-Reg.otf);
+	font-weight: normal;
+}
+@font-face{
+	font-family: proximaNova;
+	src: url(fonts/ProximaNova-Light.otf);
+	font-weight: lighter;
+}
+@font-face{
+	font-family: proximaNova;
+	src: url(fonts/ProximaNova-Sbold.otf);
+	font-weight: bold;
+}
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-family: proximaNova;
+	color:white;
+}
+#bigcontainer{
+	width:978px;
+	margin: 0 auto;
+}
+#revHeader{
+	background-color: black;
+	height:100px;
+	width:978px;
+	margin: 0 auto;
+	text-align: center;
+}
+#revHeader img{
+	display: inline-block;
+	width:165px;
+	margin:0 auto;
+	padding: 10px;
+}
+article{
+	width:978px;
+	height:600px;
+	background-image: url("images/landing.jpg");
+	background-size: 978px 510px;
+	background-repeat: no-repeat;
+	padding: 55px;
+	margin: 0 auto;
+}
+#content{
+	float: left;
+	width:350px;
+}
+h1{
+	font-size: 50px;
+	text-shadow: 5px 2px 2px #333;
+	margin: 10px;
+}
+#rate{
+	width:345px;
+}
+#watch{
+	color:red;
+	background-color: #f3f3f3;
+	line-height: 1.6;
+	width:120px;
+	font-weight: bold;
+	padding: 5px;
+	text-align: center;
+	margin: 10px;
+}
+p{
+	margin: 10px;
+}
+#play{
+	width: 100px;
+	float: left;
+	margin-top: 130px;
+	margin-left: 15px;
+}
