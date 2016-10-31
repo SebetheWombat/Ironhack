@@ -31,7 +31,7 @@ body{
 	height:550px;
 	background: url("images/family.jpg");
 	background-size: 978px;
-	position: relative;
+	
 }
 header h1{
 	font-size:45px;
@@ -68,13 +68,11 @@ article{
 
 }
 #headerbox{
-	position: absolute;
 	color:white;
 	width:570px;
 	height:225px;
 	background:rgba(0,0,0,.7);
-	top:30%;
-	left:20%;
+	margin: 40px auto 0;
 	padding:15px;
 }
 #start{
