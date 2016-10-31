@@ -52,11 +52,13 @@ p{
 	line-height: 1.6;
 }
 #comments{
-	width:600px;
+	width:615px;
 	margin:0 auto;
+
 }
 .comment{
-	border-bottom:2px groove #06824c;
+	border-bottom:2px groove #067244;
+	background: linear-gradient(#ffe,#adc6bb);
 }
 form{
 	width:600px;
