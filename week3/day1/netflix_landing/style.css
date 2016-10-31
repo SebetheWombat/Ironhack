@@ -1,0 +1,98 @@
+@font-face{
+	font-family: proximaNova;
+	src: url(fonts/ProximaNova-Reg.otf);
+	font-weight: normal;
+}
+@font-face{
+	font-family: proximaNova;
+	src: url(fonts/ProximaNova-Light.otf);
+	font-weight: lighter;
+}
+@font-face{
+	font-family: proximaNova;
+	src: url(fonts/ProximaNova-Sbold.otf);
+	font-weight: bold;
+}
+*{
+	margin:0;
+	padding: 0;
+}
+body{
+	font-family: "ProximaNova"
+
+}
+#bigcontainer{
+	width:978px;
+	margin:0 auto;
+	border:1px solid #ccc;
+}
+header{
+	width:978px;
+	height:550px;
+	background: url("images/family.jpg");
+	background-size: 978px;
+	position: relative;
+}
+header h1{
+	font-size:45px;
+	margin: 25px 5px 30px 15px;
+}
+#logo{
+	width:190px;
+	margin-top:-15px;
+	margin-left: 20px;
+}
+#sign-in{
+	float:right;
+	background-color: #e01d1d;
+	color: white;
+	width:125px;
+	padding: 4px;
+	text-align: center;
+	margin-right: 20px;
+	margin-top: 25px;
+	font-size:20px;
+	line-height: 1.6;
+}
+article{
+	width:870px;
+	height:350px;
+	padding: 10px;
+	margin:0 auto;
+}
+#posterdiv img{
+	display: inline-block;
+	height:200px;
+	width:auto;
+	margin:15px;
+
+}
+#headerbox{
+	position: absolute;
+	color:white;
+	width:570px;
+	height:225px;
+	background:rgba(0,0,0,.7);
+	top:30%;
+	left:20%;
+	padding:15px;
+}
+#start{
+	background-color: #1d95e0;
+	display: block;
+	padding:10px;
+	text-align: center;
+	margin:0 auto;
+	width:200px;
+	font-size: 18px;
+}
+#release{
+	margin: 15px;
+	font-weight: bold;
+	font-size: 30px;
+}
+footer{
+	background-color: #000;
+	width:978px;
+	height:50px;
+}
