@@ -1,0 +1,29 @@
+code{
+	background: #2db34a;
+	border-radius: 6px;
+	color: #fff;
+	display: block;
+	padding: 24px 15px;
+	text-align: center;
+}
+header, section, aside, footer{
+	margin:0 1.5% 24px 1.5%;
+	border: 1px solid black;
+}
+section{
+	position: absolute;
+	top: 200px;
+	right: 40px;
+}
+.container{
+	overflow: auto;
+}
+header{
+	position: fixed;
+	top:0;
+}
+img{
+	width:100px;
+	height:100px;
+	float: left;
+}
