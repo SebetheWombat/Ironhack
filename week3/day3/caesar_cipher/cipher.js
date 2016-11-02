@@ -1,22 +1,44 @@
-function caesarCipher (msg,shift=-3){
-	if(shift<0){
-		shift = 26+shift
-	}
-	var len = msg.length;
-	result = ""
-	for(var i =0; i<len; i++){
-		if(msg[i] >= "A" && msg[i] <= "Z"){
-			letter = String.fromCharCode(((msg.charCodeAt(i)-65+shift)%26)+65);
-		}
-		else if(msg[i] >= "a" && msg[i] <= "z"){
-			letter = String.fromCharCode(((msg.charCodeAt(i)-97+shift)%26)+97);
-		}else{
-			letter = msg[i];
-		}
-		result += letter;
-	}
-	return result;
-}
+var encrypt=require("./lib/ciphers.js").enc;
+var decrypt=require("./lib/ciphers.js").dcrpt;
 
-var encrypted = caesarCipher("Bru98t5#$%us",-3);
+var builder = function(shifter){
+	return function(msg){
+		return encrypt(msg,shifter);
+	}
+}
+var eightCipher = builder(8)
+console.log(eightCipher("Brutus"));
+
+var encrypted = encrypt("Brutus 123!@#");
+var decrypted = decrypt(encrypted);
 console.log(encrypted);
+console.log(decrypted);
+console.log("");
+
+key = 8;
+var encrypted = encrypt("Brutus 123!@#",key);
+var decrypted = decrypt(encrypted,key);
+console.log(encrypted);
+console.log(decrypted);
+console.log("");
+
+key= -32;
+var encrypted = encrypt("Brutus 123!@#",key);
+var decrypted = decrypt(encrypted,key);
+console.log(encrypted);
+console.log(decrypted);
+console.log("");
+
+key= -26;
+var encrypted = encrypt("Brutus 123!@#",key);
+var decrypted = decrypt(encrypted,key);
+console.log(encrypted);
+console.log(decrypted);
+console.log("");
+
+key= 3000;
+var encrypted = encrypt("Brutus 123!@#",key);
+var decrypted = decrypt(encrypted,key);
+console.log(encrypted);
+console.log(decrypted);
+console.log("");
