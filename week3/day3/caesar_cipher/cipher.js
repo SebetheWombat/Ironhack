@@ -15,7 +15,7 @@ console.log(encrypted);
 console.log(decrypted);
 console.log("");
 
-key = 8;
+var key = 8;
 var encrypted = encrypt("Brutus 123!@#",key);
 var decrypted = decrypt(encrypted,key);
 console.log(encrypted);
