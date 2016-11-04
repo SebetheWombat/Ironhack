@@ -11,9 +11,29 @@ var rolf = new Viking("Rolf", 15,7);
 var snorre = new Viking("Snorre", 13,5);
 var turid = new Viking("Turid", 6, 1);
 
-var pitfight = new PitFight(astrid,yngvild);
-pitfight.fight();
-var pitfight = new PitFight(gunnar,rolf);
-pitfight.fight();
-var pitfight = new PitFight(snorre,turid);
-pitfight.fight();
+
+setTimeout(function(){
+	var pitfight1 = new PitFight(astrid,yngvild);
+	console.log(`${astrid.name} and ${yngvild.name} step into the pit!`);
+	setTimeout(function(){
+		pitfight1.fight();
+	},2000);
+},500);
+	
+setTimeout(function(){
+	var pitfight2 = new PitFight(gunnar,rolf);
+	console.log(`${gunnar.name} and ${rolf.name} step into the pit!`);
+	setTimeout(function(){
+		pitfight2.fight();
+	},2000);
+},3000);
+	
+setTimeout(function(){
+
+	var pitfight3 = new PitFight(snorre,turid);
+	console.log(`${snorre.name} and ${turid.name} step into the pit!`);
+	setTimeout(function(){
+		pitfight3.fight();
+	},2000);
+},5500);
+	

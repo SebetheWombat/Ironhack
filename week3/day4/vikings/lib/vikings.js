@@ -47,8 +47,8 @@ class Pitfight{
 
 class War{
 	constructor(vikings,saxons){
-		@vikings = vikings;
-		@saxons = saxons;
+		this.vikings = vikings;
+		this.saxons = saxons;
 	}
 
 	attackVillage(pitfights){
