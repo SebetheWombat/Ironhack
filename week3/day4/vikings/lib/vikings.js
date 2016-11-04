@@ -89,14 +89,18 @@ class War{
 
 	attackVillage(){
 		var numSaxons = this.saxons.length;
+		var livingSaxons = this.saxons;
 		var i = 0;
-		while(i < this.vikings.length){
+		while(i < this.vikings.length && (numSaxons>0 && this.vikings.length >0)){
 			do{
-				var saxonSwine = this.saxons[Math.floor(Math.random()*numSaxons)];
-			}while(saxonSwine.health <= 0);
+				var saxonSwine = livingSaxons[Math.floor(Math.random()*numSaxons)];
+				console.log(saxonSwine)
+			}while(saxonSwine.health <= 0 && numSaxons > 0);
 
 			var pitfight = new Pitfight(this.vikings[i],saxonSwine);
 			pitfight.fight(false);
+			livingSaxons = this.saxons.filter(saxon => saxon.health > 0);
+			numSaxons = livingSaxons.length;
 			i++;
 		}
 	}
