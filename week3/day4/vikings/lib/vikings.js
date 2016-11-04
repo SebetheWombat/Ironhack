@@ -12,8 +12,8 @@ class Viking{
 
 class Saxon{
 	constructor(){
-		this.health = Math.floor(Math.random()*10);
-		this.strength = Math.floor(Math.random()*10);
+		this.health = Math.ceil(Math.random()*10);
+		this.strength = Math.ceil(Math.random()*5);
 	}
 
 	attack(enemy){
@@ -27,21 +27,56 @@ class Pitfight{
 		this.fighter2 = v2;
 	}
 
-	fight(){
+	fight(mockBattle){
 		var f1Health = this.fighter1.health;
 		var f2Health = this.fighter2.health;
-		console.log("\n+-----------FIGHT!-----------+");
-		console.log(`|   ${this.fighter1.name}    |    ${this.fighter2.name}   |`);
-		console.log("|----------------------------|");
-		while(f1Health > 0 && f2Health > 0){
-			
-			console.log(`|Health: ${f1Health}   |   ${f2Health}         |`);
-			f2Health = this.fighter1.attack(this.fighter2);
-			this.fighter2.health = f2Health;
-			f1Health = this.fighter2.attack(this.fighter1);
-			this.fighter1.health = f1Health;
+		var fighting = true;
+
+		if(mockBattle){
+			var viking1Health = f1Health;
+			var viking2Health = f2Health;
 		}
-		console.log("+----------------------------+\n");
+
+		var enemyName = this.fighter2.name;
+		if(enemyName === undefined){
+			enemyName = "Saxon Swine";
+		}
+		console.log("\n+------------FIGHT!------------+");
+		console.log(`|   ${this.fighter1.name}    |    ${enemyName}`);
+		console.log("|-----------------------------|");
+		while(fighting){
+			if(!mockBattle && !(this.fighter1.health > 0 && this.fighter2.health > 0)){
+				fighting = false;
+			}
+			else if(mockBattle && !(this.fighter1.health > this.fighter2.strength && this.fighter2.health > this.fighter1.strength)){
+				fighting = false;
+			}
+
+			console.log(`|Health: ${f1Health}   |   ${f2Health}`);
+			this.fighter2.health = this.fighter1.attack(this.fighter2);
+			if(this.fighter2.health<=0 && !mockBattle){
+				f2Health = "DEAD";
+			}else{
+				f2Health = this.fighter2.health;
+			}
+
+
+			this.fighter1.health = this.fighter2.attack(this.fighter1);
+			if(this.fighter1.health<=0 && !mockBattle){
+				f1Health = "DEAD";
+			}else{
+				f1Health = this.fighter1.health;
+			}
+		}
+		console.log("+------------------------------+\n");
+		if(mockBattle){
+			this.recover(viking1Health,viking2Health);
+		}
+	}
+
+	recover(h1,h2){
+		this.fighter1.health = h1;
+		this.fighter2.health = h2;
 	}
 }
 
@@ -51,15 +86,26 @@ class War{
 		this.saxons = saxons;
 	}
 
-	attackVillage(pitfights){
-		numSaxons = this.saxons.length+1;
+	attackVillage(){
+		var numSaxons = this.saxons.length;
 		for(var i = 0; i < this.vikings.length; i++){
-			saxonSwine = this.saxons[Math.floor(Math.random()*numSaxons)];
-			pitfights.fight(this.vikings[i],saxonSwine);
+			do{
+				var saxonSwine = this.saxons[Math.floor(Math.random()*numSaxons)];
+			}while(saxonSwine.health <= 0);
+			var pitfight = new Pitfight(this.vikings[i],saxonSwine);
+			pitfight.fight(false);
 		}
+	}
+
+	displayCasualties(){
+		var saxonDeaths = this.saxons.filter(function(saxon){return saxon.health <= 0;}).length;
+		var vikingDeaths = this.vikings.filter(function(viking){return viking.health <= 0;}).length;
+		console.log(`Saxon Casualties: ${saxonDeaths}\nViking Casualties: ${vikingDeaths}`);
 	}
 }
 module.exports = {
 	viking: Viking,
-	pitFight: Pitfight
+	pitFight: Pitfight,
+	war: War,
+	saxon: Saxon
 }
