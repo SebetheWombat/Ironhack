@@ -50,13 +50,17 @@ setTimeout(function(){
 
 
 setTimeout(function(){
+	var vDeaths = 0;
+	var sDeaths = 0;
 	console.log("TIME FOR WAR!!!");
 	var i = 0;
-	while(i<2){
+	var waves = Math.floor(Math.random()*4)+5;
+	console.log(waves);
+	while(i<waves && (saxons.length>0 && vikings.length >0)){	
 		console.log(`\nWAVE ${i+1}\n`);
 		var war = new War(vikings,saxons);
 		war.attackVillage();
-	 	war.displayCasualties();
+	 	var deaths = war.displayCasualties();
 
 	 	vikings = vikings.filter(function(viking){
 			return viking.health > 0;
@@ -65,11 +69,13 @@ setTimeout(function(){
 			return saxon.health > 0;
 		});
 		i++;
-		console.log(vikings);
-		console.log(saxons);
-	}
 		
+		vDeaths += deaths.vikings;
+		sDeaths += deaths.saxons;
 
+	}
+	console.log(`Dead Vikings: ${vDeaths}\nWorthless Dead Saxons: ${sDeaths}`);
+	console.log(`Viking Fatality: ${(vDeaths/6)*100}%\nSaxon Fatality ${(sDeaths/10)*100}%`);
 	
 },8000);
 

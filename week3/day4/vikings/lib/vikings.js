@@ -52,6 +52,7 @@ class Pitfight{
 				fighting = false;
 			}
 
+
 			console.log(`|Health: ${f1Health}   |   ${f2Health}`);
 			this.fighter2.health = this.fighter1.attack(this.fighter2);
 			if(this.fighter2.health<=0 && !mockBattle){
@@ -88,19 +89,27 @@ class War{
 
 	attackVillage(){
 		var numSaxons = this.saxons.length;
-		for(var i = 0; i < this.vikings.length; i++){
+		var i = 0;
+		while(i < this.vikings.length){
 			do{
 				var saxonSwine = this.saxons[Math.floor(Math.random()*numSaxons)];
 			}while(saxonSwine.health <= 0);
+
 			var pitfight = new Pitfight(this.vikings[i],saxonSwine);
 			pitfight.fight(false);
+			i++;
 		}
 	}
 
 	displayCasualties(){
-		var saxonDeaths = this.saxons.filter(function(saxon){return saxon.health <= 0;}).length;
-		var vikingDeaths = this.vikings.filter(function(viking){return viking.health <= 0;}).length;
-		console.log(`Saxon Casualties: ${saxonDeaths}\nViking Casualties: ${vikingDeaths}`);
+		var sd = this.saxons.filter(function(saxon){return saxon.health <= 0;}).length;
+		var vd = this.vikings.filter(function(viking){return viking.health <= 0;}).length;
+
+		var deaths = {
+			saxons: sd,
+			vikings: vd
+		}
+		return deaths;
 	}
 }
 module.exports = {
