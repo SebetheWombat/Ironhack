@@ -1,0 +1,9 @@
+<h2>Do the Ascii thang</h2>
+
+<form method="post" action="/asciis">
+	<label for="ascii_user_text">Text</label>
+	<textarea id="ascii_user_text" name="ascii[user_text]"></textarea>
+
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<button type="submit">Submit</button>
+</form>
