@@ -14,7 +14,7 @@ ul{
 	position: fixed;
 	height: 46px;
 }
-li{
+.nav{
 	display:inline-block;
 	list-style-type:none;
 	background: #2772aa;
@@ -23,7 +23,7 @@ li{
 	background: radial-gradient(#e0ecff 80%, #2772aa 20%);
 	box-shadow: 5px 5px 5px #333;
 }
-li:active{
+.nav:active{
 	box-shadow:none;
 }
 h1{

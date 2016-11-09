@@ -1,0 +1,9 @@
+<ul>
+	<% @projects.each do |project| %>
+		<% if project.description.present? %>
+			<li><%= link_to project.name, show_project_path(project) %> - <%= project.description %></li>
+		<% else %>
+			<li><%= link_to project.name, show_project_path(project) %></li>
+		<%end%>
+	<%end%>
+</ul>
