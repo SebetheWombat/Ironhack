@@ -5,7 +5,8 @@
 		<% else %>
 			<li><%= link_to project.name, project_path(project) %></li>
 		<%end%>
+		<%= link_to "See time entries", project_time_entries_path(project) %>
 	<%end%>
 </ul>
 
-<p><%= link_to "Add Project", projects_new_path %></p>
+<%= link_to "Add Project", projects_new_path %>
