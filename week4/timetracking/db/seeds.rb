@@ -15,3 +15,10 @@ projectG = Project.create!(name: "Stocking Mountain Lakes", description: "Eject 
 projectH = Project.create!(name: "Grubbing Burrows", description: "Scramble out on cliffs and reach blindly into holes in the rock you know contain wild animals")
 projectI = Project.create!(name: "Original Project Name", description: "Super origional")
 projectJ = Project.create!(name: "10th Project", description:"Now this is just ridiculous")
+
+TimeEntry.create!(hours: 2, minutes: 40, comments: "Not OSHA approved", date: Date.yesterday, project_id: projectH.id)
+TimeEntry.create!(hours: 2, minutes: 40, comments: "Not OSHA approved", date: Date.yesterday, project: projectF)
+projectA.time_entries.create!(hours: 10, minutes:30, comments: "Type all the code", date: Date.today)
+projectG.time_entries.create!(hours:5, minutes:50, comments: "Don't miss!", date: Date.today - 2.days)
+projectB.time_entries.create!(hours:0, minutes:15, comments: "Got to catch the train!", date: Date.today)
+
