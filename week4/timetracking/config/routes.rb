@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 	get '/say_name/:name', to: 'site#say_name'
 	get '/calculate', to: 'calculate#add_form'
 	post '/add', to: 'calculate#add' 
-	get '/projects', to: 'projects#index', as: 'project_page'
-	get '/projects/:id', to: 'projects#show', as: 'show_project'
+	get '/projects', to: 'projects#index'
+	get '/projects/new', to: 'projects#new'
+	post '/projects', to: 'projects#create'
+	get '/projects/:id', to: 'projects#show', as: 'project'
 end
