@@ -1,0 +1,20 @@
+<h2>Find a concert today</h2>
+<ul>
+<% @concertsToday.each do |c| %>
+<li><%= link_to c.artist, concert_path(c) %></li>
+<%end%>
+</ul>
+
+<aside>
+<h2>Upcoming concerts</h2>
+<ul>
+	<% @futureConcerts.each do |c| %>
+	<li><%= link_to c.artist, concert_path(c) %></li>
+	<%end%>
+</ul>
+</aside>
+
+<section>
+	<%= link_to "Add New Concert", new_concert_path %>
+
+</section>

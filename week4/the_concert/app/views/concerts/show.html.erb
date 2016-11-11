@@ -1,0 +1,41 @@
+<h2>Your concert details</h2>
+<ul>
+
+ 	<li>
+ 		<div>
+ 			<p><%= @concert.artist%></p>
+ 			<p>Venue: <%= @concert.venue %></p>
+ 			<p>Date: <%= @concert.date %> Price: <%= @concert.price %></p>
+ 			<p><%= @concert.description %></p>
+ 		</div>
+ 	</li>
+</ul>
+<%= form_for [@concert,@comment] do |f| %>
+	<div>
+	<%= f.label :author %>
+	<%= f.text_field :author %>
+	</div>
+	<div>
+	<%= f.label :date %>
+	<%= f.datetime_field :date %>
+	</div>
+	<div>
+	<%= f.label :comment %>
+	<%= f.text_area :comment %>
+	</div>
+	<%= f.button %>
+<%end%>	
+
+<h3>Comments</h3>
+<ul>
+	<% @comments.each do |c| %>
+
+	<li>
+		<p><%= c.author %></p>
+		<p><%= c.date %></p>
+		<p><%= c.comment %></p>
+	</li>
+	<%end%>
+</ul>
+<%= link_to "Back", concerts_path %>
+
