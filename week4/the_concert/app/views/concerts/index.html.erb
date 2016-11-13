@@ -1,7 +1,10 @@
 <h2>Find a concert today</h2>
 <ul>
 <% @concertsToday.each do |c| %>
-<li><%= link_to c.artist, concert_path(c) %></li>
+<li>
+	<%= link_to c.artist, concert_path(c) %>
+		<%= c.date.strftime("%H:%M") %>
+	</li>
 <%end%>
 </ul>
 
@@ -9,7 +12,9 @@
 <h2>Upcoming concerts</h2>
 <ul>
 	<% @futureConcerts.each do |c| %>
-	<li><%= link_to c.artist, concert_path(c) %></li>
+	<li><%= link_to c.artist, concert_path(c) %>
+		<%= c.date.strftime("%b %d") %>
+	</li>
 	<%end%>
 </ul>
 </aside>

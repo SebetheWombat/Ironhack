@@ -1,41 +1,55 @@
+
 <h2>Your concert details</h2>
 <ul>
 
  	<li>
  		<div>
- 			<p><%= @concert.artist%></p>
- 			<p>Venue: <%= @concert.venue %></p>
- 			<p>Date: <%= @concert.date %> Price: <%= @concert.price %></p>
- 			<p><%= @concert.description %></p>
+ 			<p><b>Artist:</b> <%= @concert.artist%></p>
+ 			<p><b>Venue:</b> <%= @concert.venue %></p>
+ 			<p><b>Date:</b> <%= @concert.date.strftime("%B %d %Y") %></p>
+ 			<p><b>Time:</b> <%= @concert.date.strftime("%H:%M") %></p>
+ 			<p><b>Price:</b> <%= @concert.price %></p>
+ 			<p><b>Description:</b> <%= @concert.description %></p>
  		</div>
  	</li>
 </ul>
-<%= form_for [@concert,@comment] do |f| %>
-	<div>
-	<%= f.label :author %>
-	<%= f.text_field :author %>
+<h3>Tell People What You Think</h3>
+
+<div id = "comment_form">
+<%= form_for [@concert,@comment], :html => {:class => "form-horizontal"} do |f| %>
+	<div class= "form-group">
+		<%= f.label :author,  class: "control-label col-md-2"%>
+		<div class="col-sm-8">
+			<%= f.text_field :author, class: "form-control" %>
+		</div>
 	</div>
-	<div>
-	<%= f.label :date %>
-	<%= f.datetime_field :date %>
+	<div class= "form-group">
+		<%= f.label :date,  class: "control-label col-md-2" %>
+		<div class="col-sm-8">
+			<%= f.datetime_field :date, class: "form-control" %>
+		</div>
 	</div>
-	<div>
-	<%= f.label :comment %>
-	<%= f.text_area :comment %>
+	<div class= "form-group">
+		<%= f.label :comment,  class: "control-label col-md-2" %>
+		<div class="col-sm-8">
+			<%= f.text_area :comment, class: "form-control" %>
+		</div>
 	</div>
 	<%= f.button %>
 <%end%>	
+</div>
 
-<h3>Comments</h3>
-<ul>
-	<% @comments.each do |c| %>
+	<h3>What people are saying:</h3>
+	<div id="comments">
+	<ul>
+		<% @comments.each do |c| %>
 
-	<li>
-		<p><%= c.author %></p>
-		<p><%= c.date %></p>
-		<p><%= c.comment %></p>
-	</li>
-	<%end%>
-</ul>
+		<li class="comment">
+			<p><b><%= c.author %></b> <span class="muted"><%= c.date.strftime("%B %d %Y %H:%M") if c.date %></span></p>
+			<p><%= c.comment %></p>
+		</li>
+		<%end%>
+	</ul>
+</div>
 <%= link_to "Back", concerts_path %>
 

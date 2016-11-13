@@ -1,3 +1,27 @@
 // Place all the styles related to the concerts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#comments{
+	text-align: left;
+	margin:15px;
+
+}
+
+.comment{
+	line-height: 1.6;
+	margin:10px auto;
+	min-height:25px;
+	width:750px;
+	border:1px solid #eee;
+	padding:10px;
+	background: #dbf1fc;
+	box-shadow: 2px 2px 2px #3b5968;
+
+}
+.comment p{
+	margin:0;
+}
+#comment_form{
+	width:750px;
+	margin:0 auto;
+}

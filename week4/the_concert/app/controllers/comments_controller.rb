@@ -8,5 +8,6 @@ class CommentsController < ApplicationController
 		if @comment.save
 			redirect_to(concert_path(@concert))
 		end
+
 	end
 end

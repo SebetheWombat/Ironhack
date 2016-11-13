@@ -1,7 +1,8 @@
 class ConcertsController < ApplicationController
 	def index
-		@concertsToday = Concert.all.select { |c| c.date > Time.now && c.date < Date.today.at_midnight + 1.day}
-		@futureConcerts = Concert.all.select { |c| c.date > Date.today.at_midnight + 1.day}
+		@today = Date.today 
+		@concertsToday = Concert.where({date: (Time.now)..(@today.at_midnight + 1.day)})
+		@futureConcerts = Concert.where ({date: (@today.at_midnight + 1.day)..(@today.at_midnight + (1.month - @today.day.days))})
 		render 'index'
 	end
 
