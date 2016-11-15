@@ -1,74 +1,30 @@
 // Write your Pizza Builder JavaScript in this file.
-$(document).ready(function(){
+var price = 13 ;
+$(document).ready(function(){	
+	$(".wtops").toggle();
+	$(".glutops").toggle();
 
-		var price = 13 ;
-		$(".wtops").toggle();
-		$(".glutops").toggle();
-
-	$(".btn-pepperonni").on("click", function(){
-		$(".pep").toggle();
-		$(this).toggleClass("active");
-		if ($(this).hasClass("active")){
-			price += 1 ; 
-		}
-		else {
-			price -= 1
-		}
-		$(".ptops").toggle();
-		$(".displayPrice").html(`$${price}`)
-	});
-
-	$(".btn-mushrooms").on("click", function(){
-		$(".mushroom").toggle();
-		$(this).toggleClass("active");
-		$(".mtops").toggle();
-		if ($(this).hasClass("active")){
-			price += 1 ; 
-		}
-		else {
-			price -= 1
-		}
-		$(".displayPrice").html(`$${price}`)
-	});
-
-	$(".btn-green-peppers").on("click", function(){
-		$(".green-pepper").toggle();
-		$(this).toggleClass("active")
-		$(".gtops").toggle();
-		if ($(this).hasClass("active")){
-			price += 1 ; 
-		}
-		else {
-			price -= 1;
-		}
-		$(".displayPrice").html(`$${price}`)
-	});
-
-	$(".btn-sauce").on("click", function(){
-		$(".sauce").toggleClass("sauce-white");
-		$(this).toggleClass("active")
-		$(".wtops").toggle();
-		if ($(this).hasClass("active")){
-			price += 3 ; 
-		}
-		else {
-			price -= 3 ;
-		}
-		$(".displayPrice").html(`$${price}`)
-	});
-
-
-	$(".btn-crust").on("click", function(){
-		$(".crust").toggleClass("crust-gluten-free");
-		$(this).toggleClass("active")
-		$(".glutops").toggle();
-		if ($(this).hasClass("active")){
-			price += 5 ; 
-		}
-		else {
-			price -= 5
-		}
-		$(".displayPrice").html(`$${price}`)
-	});
-
+	doTheThing(".btn-pepperonni",".pep",".ptops",1,"");
+	doTheThing(".btn-mushrooms",".mushroom",".mtops",1,"");
+	doTheThing(".btn-green-peppers",".green-pepper",".gtops",1,"");
+	doTheThing(".btn-sauce",".sauce",".wtops",3,"sauce-white");
+	doTheThing(".btn-crust",".crust",".glutops",5,"crust-gluten-free");
 });
+
+function doTheThing(btn, topping, listClass, adjPrice, tClass){
+	$(btn).on("click", function(){
+		if(tClass === ""){
+			$(topping).toggle();
+		}else {
+			$(topping).toggleClass(tClass);
+		}
+		$(this).toggleClass("active")
+		$(listClass).toggle();
+		if ($(this).hasClass("active")){
+			price += adjPrice ; 
+		}else {
+			price -= adjPrice;
+		}
+		$(".displayPrice").html(`$${price}`)
+	});
+}
