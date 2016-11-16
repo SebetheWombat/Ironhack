@@ -3,20 +3,36 @@
 <head>
 	<meta charset="utf-8">
 	<title>Spotify</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="js/app.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="css/styles.css">
+	<script src="js/app.js"></script>
 	
 </head>
 <body>
 	<header>
 		<h1>Spotify Search</h1>
 	</header>
-	<div class="js-albums">
 
-	</div>
+	<div class="modal fade" tabindex="-1" role="dialog">
+		  <div class="modal-dialog modal-lg" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h1 class="modal-title">Albums</h1>
+		      </div>
+		      <div class="modal-body">
+		        <p>One fine body&hellip;</p>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
 	<div id="search">
 		<form class="js-artist-search">
 				<label for="artist">Artist Name</label>

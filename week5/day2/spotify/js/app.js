@@ -5,7 +5,7 @@ $(document).ready(function(){
 
 function findAlbum(){
 	var id = $(this).data("artist-id");
-	var url = `https://api.spotify.com/v1/artists/${id}/albums`;
+	var url = `https://api.spotify.com/v1/artists/${id}/albums?market=US`;
 	$.ajax({
 		type: 'GET',
 		url: url,
@@ -15,19 +15,17 @@ function findAlbum(){
 }
 
 function showAlbum(response){
-	$('.js-albums').empty();
-	$('.js-albums').append(`<h1>Albums:</h1`);
-	console.log(response.items[0].name);
+	$('.modal-body').empty();
+
+	console.log(response.items);
 	var albums = response.items;
 	albums.forEach(function(album){
-		console.log(album.name);
-		var html = `<p> ${album.name} </p>`;
-		$('.js-albums').append(html);
+		var src = album.images[0].url;
+		var html = `<div class="col-sm-4 albums"><p> ${album.name} </p>
+					<img class="img-responsive" src=${src}></div>`;
+		$('.modal-body').append(html);
 	});
-	$('.js-albums').show();
-	$('.js-albums').on('click',function(){
-		$(this).hide();
-	});
+	$('.modal').modal('show');
 }
 
 function findArtist(e){
