@@ -1,7 +1,31 @@
 $(document).ready(function(){
 	$('.js-artist-search').on('submit', findArtist);
 	$('.artists').on('click','.left', findAlbum);
+	$('.album-modal').on('click','.albums', findTracks);
+
 });
+
+function findTracks(){
+	var id= $(this).data("album-id");
+	var url = `https://api.spotify.com/v1/albums/${id}/tracks`
+	$.ajax({
+		type: "GET",
+		url: url,
+		success: showTracks,
+		error: handleError
+	})
+}
+
+function showTracks(response){
+	var tracks = response.items;
+	$('.track-modal-body').empty();
+	tracks.forEach(function(track){
+		var url = track.preview_url;
+		var html = `<div><a href=${url} target="_blank">${track.name}</a></div>`
+		$('.track-modal-body').append(html);
+	});
+	$('.track-modal').modal('show');
+}
 
 function findAlbum(){
 	var id = $(this).data("artist-id");
@@ -15,17 +39,18 @@ function findAlbum(){
 }
 
 function showAlbum(response){
-	$('.modal-body').empty();
+	$('.album-modal-body').empty();
 
 	console.log(response.items);
 	var albums = response.items;
 	albums.forEach(function(album){
 		var src = album.images[0].url;
-		var html = `<div class="col-sm-4 albums"><p> ${album.name} </p>
+		var id = album.id;
+		var html = `<div data-album-id=${id} class="col-sm-4 albums"><p> ${album.name} </p>
 					<img class="img-responsive" src=${src}></div>`;
-		$('.modal-body').append(html);
+		$('.album-modal-body').append(html);
 	});
-	$('.modal').modal('show');
+	$('.album-modal').modal('show');
 }
 
 function findArtist(e){
