@@ -19,7 +19,7 @@
 
 			<div class="metadata">
 			  <p class="title">Hunger of The Pine</p>
-			  <p class="author">alt-J</p>
+			  <p class="author" data-id="3XHO7cRUPCLOr6jwp8vsx5">alt-J</p>
 
 			  <div class="seekbar">
 			    <progress class="js-bar" value="0" max="30"></progress>
@@ -38,6 +38,43 @@
 		<input type="text" id="song" class="js-song">
 		<button>Search</button>
 	</form>
+
+	<div class="modal fade js-modal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+
+	      <div class="modal-header">
+	        <!-- Close button -->
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span>&times;</span>
+	        </button>
+
+	        <h2 class="js-modal-header js-modal-name"></h2>
+	      </div>
+
+	      <div class="modal-body clearfix">
+
+	      	<img class="js-modal-photo" src="">
+	      	<div class="gimme-some-space">
+		      	<table>
+		      		<tr>
+		      			<td class="bold">Popularity: </td>
+		      			<td class="js-modal-pop"></td>
+		      		</tr>
+		      		<tr>
+		      			<td class="bold">Followers: </td>
+		      			<td class="js-modal-follow"></td>
+		      		</tr>
+		      	</table>
+		      	<p class="bold">Genres:</p>
+		      	<ul class="js-modal-genres"></ul>
+		      </div>
+	      </div>
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 
 </body>
 </html>

@@ -153,3 +153,17 @@ progress::-webkit-progress-value {
 progress::-moz-progress-bar {
   background-color: #45a800;
 }
+.bold{
+  font-weight: bold;
+}
+ .js-modal-photo{
+  width:33.33%;
+  float:left;
+ }
+ .gimme-some-space{
+  margin-left: 200px;
+ }
+form{
+  margin:0 auto;
+  text-align:center;
+}
