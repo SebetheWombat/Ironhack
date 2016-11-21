@@ -77,6 +77,7 @@ function getSong(response){
 		})
 	} else{
 		console.log("SUCCESS");
+		var tracks = response.tracks;
 		var info = response.tracks.items[0];
 		console.log(info);
 		var songPrev = info.preview_url;

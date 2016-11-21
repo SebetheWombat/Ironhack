@@ -2,7 +2,6 @@ $(document).ready(function(){
 	$('.js-artist-search').on('submit', findArtist);
 	$('.artists').on('click','.left', findAlbum);
 	$('.album-modal').on('click','.albums', findTracks);
-
 });
 
 function findTracks(){
@@ -29,6 +28,7 @@ function showTracks(response){
 
 function findAlbum(){
 	var id = $(this).data("artist-id");
+	
 	var url = `https://api.spotify.com/v1/artists/${id}/albums?market=US`;
 	$.ajax({
 		type: 'GET',
@@ -40,12 +40,13 @@ function findAlbum(){
 
 function showAlbum(response){
 	$('.album-modal-body').empty();
-
-	console.log(response.items);
+	var names = $(this).data("artist-name");
+	console.log(names);
 	var albums = response.items;
 	albums.forEach(function(album){
 		var src = album.images[0].url;
 		var id = album.id;
+		var name = album.name;
 		var html = `<div data-album-id=${id} class="col-sm-4 albums"><p> ${album.name} </p>
 					<img class="img-responsive" src=${src}></div>`;
 		$('.album-modal-body').append(html);
@@ -72,15 +73,14 @@ function showUp(response){
 	var art = response.artists.items;
 
 	art.forEach(function(a){
-		// console.log(a.name);
-		// console.log(a.images);
-		// console.log(a.id);
 		var id = a.id;
+		var name = a.name;
+
 		var img = "https://cdn.pixabay.com/photo/2016/09/08/16/54/emotiguy-1654862_1280.png";
 		if(a.images.length > 0){
 			img = a.images[0].url;
 		}
-		var html = `<div data-artist-id=${id} class="left"> <h3>${a.name}</h3>
+		var html = `<div data-artist-id=${id} data-artist-name=${name} class="left"> <h3>${a.name}</h3>
 					<img class="profile" src=${img}> </div>`
 		$('.artists').append(html);
 	});

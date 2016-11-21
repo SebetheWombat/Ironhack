@@ -19,7 +19,7 @@ PokemonApp.showEvolutions = function(response){
 	var evolutions = response.evolutions;
 	$('.js-eChart').empty();
 	if(evolutions.length === 0){
-		$(".js-eChart").append(`<h2>No Further Evolutions</h2`);
+		$(".js-eChart").append(`<h2>No Further Evolutions</h2>`);
 	}else{
 		evolutions.forEach(function(evolution){
 			console.log(evolution.to);
