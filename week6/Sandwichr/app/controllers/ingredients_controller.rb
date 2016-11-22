@@ -8,6 +8,9 @@ class IngredientsController < ApplicationController
 
 	def create
 		ingredient = Ingredient.create(ingredient_params)
+		#ingredient = Ingredient.new(
+			#name: params[:ingredient][:name],
+			#calories: params[:ingredient][:calories])
 		render json: ingredient
 	end
 	

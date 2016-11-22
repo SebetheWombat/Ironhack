@@ -31,8 +31,9 @@ ActiveRecord::Schema.define(version: 20161121211916) do
   create_table "sandwiches", force: :cascade do |t|
     t.string   "name"
     t.string   "bread_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "total_calories", default: 0
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
 end
