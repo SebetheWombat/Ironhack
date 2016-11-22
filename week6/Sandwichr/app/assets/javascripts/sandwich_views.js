@@ -3,14 +3,18 @@
 //You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready(function(){
 	$('.js-ingredients').on('click', function(){
-		var url = "/api/sandwiches/1/ingredients/add";
+		var sandId = $(".js-sandwich").data("sandwich");
+		var url = `/api/sandwiches/${sandId}/ingredients/add`;
+		var id = $(this).data("ingredient");
+		console.log(id);
 
 		$.ajax({
 			type: "POST",
 			url: url,
-			data: {ingredient_id: 1},
+			data: {ingredient_id: id},
 			success: doTheThing,
-			error: handleError
+			error: handleError,
+
 		});
 	});
 });
@@ -18,6 +22,13 @@ $(document).ready(function(){
 function doTheThing(response){
 	console.log("SUCCESS!!!");
 	console.log(response);
+	var html = `<li> ${response.name}</li>`;
+	var totsCals = $(".js-cals").data("cals");
+	console.log(`totsCals ${totsCals}`);
+	var cals = response.calories + totsCals;
+	$(".js-cals").data(cals);
+	$(".js-cals").text(cals);
+	$(".js-ingredients-list").append(html);
 }
 
 function handleError(err){

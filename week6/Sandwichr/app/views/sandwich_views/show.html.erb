@@ -1,9 +1,9 @@
 <h1>YOUR LINKS WORK!</h1>
 
-<%= @sandwich.name %>
+<p class="js-sandwich" data-sandwich=<%= @sandwich.id %>><%= @sandwich.name %></p>
 <%= @sandwich.bread_type %>
-<%= @sandwich.total_calories %>
-<ul>
+<p class="js-cals" data-cals=<%= @sandwich.total_calories %>> <%= @sandwich.total_calories %></p>
+<ul class="js-ingredients-list">
 <h3>On sandwich</h3>
 <% @sandwich.ingredients.each do |ingredient| %>
 <li><%= ingredient.name %></li>
@@ -13,7 +13,7 @@
 
 <h3>Possible Ingredients</h3>
 <% @ingredients.each do |i| %>
-<button class="js-ingredients" data-ingredient="#{i.id}">
+<button class="js-ingredients" data-ingredient=<%=i.id%>>
 	<%= i.name %>
 	<%= i.calories %>
 </button>
