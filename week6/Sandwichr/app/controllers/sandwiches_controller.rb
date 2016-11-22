@@ -45,7 +45,8 @@ class SandwichesController < ApplicationController
 		#the_sandwich.ingredients.push(ah_ingredient)
 
 		SandwichIngredient.create(sandwich_id: the_sandwich.id, ingredient_id: ah_ingredient.id)
-		redirect_to "/sandwiches/#{params[:id]}"
+		# redirect_to "/sandwiches/#{params[:id]}"
+		render json: ah_ingredient
 	end
 
 	private
