@@ -1,8 +1,21 @@
 <h1>Hello, <%= @name %>!</h1>
+<% if flash[:success] %>
+	<p class="success"><%= flash[:success] %></p>
+<%end%>
 
+<% if flash[:loggedIn] %>
+  <p><%= flash[:loggedIn] %></p>
+<%end%>
+
+<% if flash[:admin_only] %>
+	<p class="admin"><%= flash[:admin_only] %></p>
+<%end%>
 <% if session[:user_id] %>
   <%= link_to "My profile", "/profile" %><br>
-  <%= link_to "All profiles", "/users" %><br>
+  <% if @current_user.role == "admin" %>
+  	<%= link_to "All profiles", "/users" %><br>
+  	<%= link_to "Secrets", "/secret_img" %><br>
+  <%end%>
   <%= link_to "Logout", "/logout", method: "delete" %>
 <% else %>
   <%= link_to "Sign up", "/signup" %><br>
