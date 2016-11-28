@@ -15,6 +15,7 @@ class SandwichesController < ApplicationController
 		a_sandwich = Sandwich.find(params[:id])
 		many_ingredients = a_sandwich.ingredients
 		render json: {sandwich: a_sandwich, ingredients: many_ingredients}
+		#alternatively---> render json: a_sandwich.to_json(include: [:ingredients])
 	end
 
 	def update
@@ -31,29 +32,25 @@ class SandwichesController < ApplicationController
 
 	def add_ingredient
 		the_sandwich = Sandwich.find(params[:id])
-		tots_calories = the_sandwich.total_calories
-		puts "TOTAL calories"
-		puts tots_calories
-
 		ah_ingredient = Ingredient.find(params[:ingredient_id])
 
+		tots_calories = the_sandwich.total_calories
 		more_calories = ah_ingredient.calories
-		puts "MORE CALORIES"
-		puts more_calories
 		tots_calories += more_calories
 		the_sandwich.update(total_calories: tots_calories)
-		#the_sandwich.ingredients.push(ah_ingredient)
 
 		SandwichIngredient.create(sandwich_id: the_sandwich.id, ingredient_id: ah_ingredient.id)
-		# redirect_to "/sandwiches/#{params[:id]}"
+		#alternatively------> the_sandwich.ingredients.push(ah_ingredient)
+
+		# render json: the_sandwich.to_json(include: [:ingredients])
 		render json: ah_ingredient
 	end
 
 	private
 
 	def sandwich_params
+		#white list of permited params (security reasons)
 		params.require(:sandwich).permit(:name, :bread_type, :total_calories)
 	end
-
 
 end

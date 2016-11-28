@@ -1,13 +1,22 @@
-<h1>YOUR LINKS WORK!</h1>
+<h2>Sandwich Details</h2>
 
-<p class="js-sandwich" data-sandwich=<%= @sandwich.id %>><%= @sandwich.name %></p>
-<%= @sandwich.bread_type %>
-<p class="js-cals" data-cals=<%= @sandwich.total_calories %>> <%= @sandwich.total_calories %></p>
+<p class="js-sandwich" data-sandwich=<%= @sandwich.id %>>
+	<%= @sandwich.name %>
+</p>
+<p>
+	Bread Type: <%= @sandwich.bread_type %>
+</p>
+<p class="js-cals" data-cals=<%= @sandwich.total_calories %>> 
+	Total Calories: <%= @sandwich.total_calories %>
+</p>
 <ul class="js-ingredients-list">
-<h3>On sandwich</h3>
-<% @sandwich.ingredients.each do |ingredient| %>
-<li><%= ingredient.name %></li>
-<%end%>
+	<h3>On sandwich</h3>
+	<% @sandwich.ingredients.each do |ingredient| %>
+		<li>
+			<h4><%= ingredient.name %></h4>
+			<p> Calories: <%= ingredient.calories %></p>
+		</li>
+	<%end%>
 </ul>
 
 

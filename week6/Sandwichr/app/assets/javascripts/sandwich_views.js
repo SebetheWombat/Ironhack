@@ -7,7 +7,6 @@ $(document).ready(function(){
 		var url = `/api/sandwiches/${sandId}/ingredients/add`;
 		var id = $(this).data("ingredient");
 		console.log(id);
-
 		$.ajax({
 			type: "POST",
 			url: url,
