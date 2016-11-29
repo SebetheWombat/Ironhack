@@ -1,0 +1,21 @@
+<p> Track your comic books. </p>
+
+<h2>Starts at only $99 a month. </h2>
+
+<% if user_signed_in? %>
+<h3>See our users' profiles</h3>
+
+<ul>
+	<% @users_list.each do |user| %>
+	<li><%= link_to(user.first_name, user_path(user)) %></li>
+	<%end%>
+</ul>
+<%else%>
+	<h3>Our users</h3>
+	<%= link_to "Sign up to see their profiles", new_user_registration_path %>
+	<ul>
+	<% @users_list.each do |user| %>
+	<li><%= user.first_name %></li>
+	<%end%>
+</ul>
+<%end%>
