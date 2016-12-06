@@ -22,12 +22,15 @@ function doTheThing(response){
 	console.log("SUCCESS!!!");
 	console.log(response);
 
-	var html = `<li> ${response.name}</li>`;
+	var html = `<li>
+			<h4> ${response.name}</h4>
+			<p> Calories: ${response.calories}</p>
+		</li>`;
 	var totsCals = $(".js-cals").data("cals");
 	console.log(`totsCals ${totsCals}`);
 	var cals = response.calories + totsCals;
 	$(".js-cals").data("cals", cals);
-	$(".js-cals").text(cals);
+	$(".js-cals").text(`Total Calories: ${cals}`);
 	$(".js-ingredients-list").append(html);
 }
 
